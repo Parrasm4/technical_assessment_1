@@ -36,7 +36,6 @@ problem.
 
   - For the rest of the assessment, you will be working to build out some js functionality, using a test suite as your guide.
   - Start with the meal.js file.
-  - Unskip the first test in test/meal-test.js
   - Run npm test test/meal-test.js
   - Read the error messages CAREFULLY!
   - Make the test pass.
@@ -45,8 +44,7 @@ problem.
 
 2. Complete the order tests
 
-  - Unskip the first test in test/order-test.js, and get to work passing the tests
+  - Work on passing the tests
   - Run npm test test/order-test.js
-  - Ensure that all of the skips are removed from the test file when you push up to GitHub.
   - Before moving on to the next iteration, take time to refactor your solutions. Is this the best approach to solving the problem? Is there a different way you could make the tests pass?
 
