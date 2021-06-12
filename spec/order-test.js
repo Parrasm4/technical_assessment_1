@@ -2,7 +2,7 @@
   'use strict';
 
 
-describe("order.js", function() {
+describe("Part 2: order.js", function() {
   describe("takeOrder", function() {
     it("should be a function", function() {
       expect(takeOrder).to.be.a('function');
