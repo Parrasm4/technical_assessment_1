@@ -1,24 +1,15 @@
-var chai = require("chai");
-var assert = chai.assert;
+(function() {
+  'use strict';
 
-var {
-  nameMenuItem,
-  createMenuItem,
-  addIngredients,
-  formatPrice,
-  decreasePrice,
-  createRecipe
-} = require("../src/meal");
-
-describe("meal.js", function() {
+describe("Part 1: meal.js", function() {
   describe("nameMenuItem", function() {
     it("should be a function", function() {
-     assert.isFunction(nameMenuItem);
+     expect(nameMenuItem).to.be.a('function');
     });
 
-    it("should take in a name and make a delicious name", function () {
+    it('should take in a name and make "Delicious [name]"', function () {
       var menuItemName = nameMenuItem("Pizza");
-      assert.equal(menuItemName, "Delicious Pizza");
+      expect(menuItemName).to.equal("Delicious Pizza");
     });
 
     it("should be able to create many delicious titles", function () {
@@ -26,39 +17,39 @@ describe("meal.js", function() {
       var sushiItem = nameMenuItem("Pizza");
       var tacoItem = nameMenuItem("Taco");
 
-      assert.equal(burritoItem, "Delicious Burrito");
-      assert.equal(sushiItem, "Delicious Pizza");
-      assert.equal(tacoItem, "Delicious Taco");
+      expect(burritoItem).to.equal("Delicious Burrito");
+      expect(sushiItem).to.equal("Delicious Pizza");
+      expect(tacoItem).to.equal("Delicious Taco");
     });
   });
 
   describe("createMenuItem", function() {
     it("should be a function", function () {
-      assert.isFunction(createMenuItem);
+      expect(createMenuItem).to.be.a('function');
     });
 
     it("should create a menu item object", function() {
       var menuItemName = nameMenuItem("French Toast");
       var menuItem = createMenuItem(menuItemName, 10.99, "breakfast");
 
-      assert.equal(menuItem.name, "Delicious French Toast");
-      assert.equal(menuItem.price, 10.99);
-      assert.equal(menuItem.type, "breakfast");
+      expect(menuItem.name).to.equal("Delicious French Toast");
+      expect(menuItem.price).to.equal(10.99);
+      expect(menuItem.type).to.equal("breakfast");
     });
   });
 
   describe("addIngredients", function() {
     it("should be a function", function () {
-      assert.isFunction(addIngredients);
+      expect(addIngredients).to.be.a('function');
     });
 
-    it("should be able to add ingredients to an array", function() {
+    it("should be able to add ingredients to an existing array", function() {
       var ingredients = [];
 
       addIngredients("cheese", ingredients);
 
-      assert.equal(ingredients.length, 1);
-      assert.deepEqual(ingredients, ["cheese"]);
+      expect(ingredients.length).to.equal(1);
+      expect(ingredients).to.deep.equal(["cheese"]);
     });
 
     it("should be able to add ingredients to an array that already contains ingredients", function() {
@@ -68,8 +59,8 @@ describe("meal.js", function() {
       addIngredients("peppers", ingredients);
       addIngredients("onion", ingredients);
 
-      assert.equal(ingredients.length, 3);
-      assert.deepEqual(ingredients, ["cheese", "peppers", "onion"]);
+      expect(ingredients.length).to.equal(3);
+      expect(ingredients).to.deep.equal(["cheese", "peppers", "onion"]);
     });
 
     it("should only add unique ingredients", function() {
@@ -79,14 +70,14 @@ describe("meal.js", function() {
       addIngredients("peppers", ingredients);
       addIngredients("peppers", ingredients);
 
-      assert.equal(ingredients.length, 2);
-      assert.deepEqual(ingredients, ["cheese", "peppers"]);
+      expect(ingredients.length).to.equal(2);
+      expect(ingredients).to.deep.equal(["cheese", "peppers"]);
     })
   })
 
   describe("formatPrice", function() {
     it("should be a function", function () {
-      assert.isFunction(formatPrice);
+      expect(formatPrice).to.be.a('function');
     });
 
     it("should add a dollar sign in front of the price", function () {
@@ -95,7 +86,7 @@ describe("meal.js", function() {
       var initialPrice = menuItem.price;
 
       var formattedPrice = formatPrice(initialPrice);
-      assert.equal(formattedPrice, "$10.99")
+      expect(formattedPrice).to.equal("$10.99");
     });
 
     it("should add a dollar sign in front of a different price", function () {
@@ -104,13 +95,13 @@ describe("meal.js", function() {
       var initialPrice = menuItem.price;
 
       var formattedPrice = formatPrice(initialPrice);
-      assert.equal(formattedPrice, "$5.99")
+      expect(formattedPrice).to.equal("$5.99");
     });
   });
 
   describe("decreasePrice", function() {
     it("should be a function", function () {
-      assert.isFunction(decreasePrice);
+      expect(decreasePrice).to.be.a('function');
     });
 
     it("should decrease the price by 10%", function() {
@@ -118,13 +109,13 @@ describe("meal.js", function() {
       var menuItem = createMenuItem(menuItemName, 6.00, "dessert");
       var decreasedPrice = decreasePrice(menuItem.price);
 
-      assert.equal(decreasedPrice, 5.40);
+      expect(decreasedPrice).to.equal(5.40);
     })
   })
 
   describe("createRecipe", function() {
     it("should be a function", function () {
-      assert.isFunction(createRecipe);
+      expect(createRecipe).to.be.a('function');
     });
 
     it("should return a recipe object", function() {
@@ -138,9 +129,9 @@ describe("meal.js", function() {
       var menuItemType = menuItem.type;
 
       var recipe = createRecipe(title, ingredients, menuItemType);
-      assert.equal(recipe.title, "Delicious Eggs & Bacon");
-      assert.deepEqual(recipe.ingredients, ["eggs", "bacon"]);
-      assert.equal(recipe.type, "breakfast");
+      expect(recipe.title).to.equal("Delicious Eggs & Bacon");
+      expect(recipe.ingredients).to.deep.equal(["eggs", "bacon"]);
+      expect(recipe.type).to.equal("breakfast");
     });
 
 
@@ -156,9 +147,11 @@ describe("meal.js", function() {
       var menuItemType = menuItem.type;
 
       var recipe = createRecipe(title, ingredients, menuItemType);
-      assert.equal(recipe.title, "Delicious Grilled Cheese");
-      assert.deepEqual(recipe.ingredients, ["bread", "cheese", "butter"]);
-      assert.equal(recipe.type, "lunch");
+      expect(recipe.title).to.equal("Delicious Grilled Cheese");
+      expect(recipe.ingredients).to.deep.equal(["bread", "cheese", "butter"]);
+      expect(recipe.type).to.equal("lunch");
     });
   });
 });
+
+}());
