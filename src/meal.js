@@ -7,9 +7,8 @@
 
 function nameMenuItem(item) {
     // Please write your code here
+    return "Delicious " + item;
 }
-
-
 
 
 
@@ -20,8 +19,14 @@ function nameMenuItem(item) {
 ----Your function should return an object with the keys of 'name', 'price' and 'type'
 ----Example: createMenuItem("Cheesecake", 7.50, "Pastry") : createMenuItem.name -> "Cheesecake", createMenuItem.price -> 7.50, createMenuItem.type -> "Pastry"
 */
-function createMenuItem(name, price, type){
+function createMenuItem(cheesecake, cakePrice, cakeType){
     // Please write your code here
+    var menuItem = {
+    name: cheesecake,
+    price: cakePrice,
+    type:cakeType
+    }
+    return menuItem;
 }
 
 
@@ -37,8 +42,9 @@ function createMenuItem(name, price, type){
 */
 function addIngredients(ingredient, ingredientArray) {
     // Please write your code here
+    //If ingredient doesn't exist in array list, add to array
+    
 }
-
 
 
 
@@ -49,6 +55,7 @@ function addIngredients(ingredient, ingredientArray) {
 */
 function formatPrice(price){
     // Please write your code here
+    return "$" + price;
 }
 
 
@@ -66,6 +73,7 @@ function formatPrice(price){
 */
 function decreasePrice(price){
     // Please write your code here
+    return price - (price * .1);
 }
 
 
@@ -82,4 +90,10 @@ function decreasePrice(price){
 */
 function createRecipe(recipeTitle, recipeIngredients, menuType) {
     // Please write your code here
+    var newRecipe = {
+        title: recipeTitle,
+        ingredients: recipeIngredients,
+        type: menuType
+    }
+    return newRecipe;
 }
